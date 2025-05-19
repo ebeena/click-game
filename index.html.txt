@@ -1,0 +1,40 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クリックゲーム</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; }
+    button { font-size: 2rem; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>クリックゲーム</h1>
+  <p>10秒で何回クリックできる？</p>
+  <p id="score">0</p>
+  <button id="clickBtn" disabled>クリック！</button>
+  <p><button onclick="startGame()">スタート</button></p>
+
+  <script>
+    let score = 0;
+    const clickBtn = document.getElementById("clickBtn");
+    const scoreDisplay = document.getElementById("score");
+
+    clickBtn.addEventListener("click", () => {
+      score++;
+      scoreDisplay.textContent = score;
+    });
+
+    function startGame() {
+      score = 0;
+      scoreDisplay.textContent = score;
+      clickBtn.disabled = false;
+      setTimeout(() => {
+        clickBtn.disabled = true;
+        alert(`結果：${score} 回クリックしました！`);
+      }, 10000);
+    }
+  </script>
+</body>
+</html>
